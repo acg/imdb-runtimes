@@ -58,7 +58,10 @@ def main():
     data = datasets[year - MIN_YEAR]
     fig, ax = plt.subplots(1, 1)
     fig.suptitle('Movie Runtimes, %s' % year)
-    ax.hist(data, bins=MAX_RUNTIME - MIN_RUNTIME + 1, range=[MIN_RUNTIME, MAX_RUNTIME], density=True)
+    N, bins, patches = ax.hist(data, bins=MAX_RUNTIME - MIN_RUNTIME + 1, range=[MIN_RUNTIME, MAX_RUNTIME], density=True)
+    patches[60].set_facecolor('r')
+    patches[90].set_facecolor('r')
+    patches[120].set_facecolor('r')
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     ax.tick_params(axis='both', which='major', labelsize=8)
     plt.xlabel('minutes')
